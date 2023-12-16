@@ -1,0 +1,37 @@
+﻿@using CellPhoneX_2100009273.Models;
+@{
+    ViewBag.Title = "_SideBar";
+}
+
+
+<!-- aside Widget -->
+@*<div class="aside">
+    <h3 class="aside-title">Lọc theo giá bán</h3>
+    <ul>
+        <li>@Html.ActionLink("Dưới 10 triệu", "DownTo10M", "Products")</li>
+        <li>Từ 10 đến 30 triệu</li>
+        <li>Trên 30 triệu</li>
+    </ul>
+</div>*@
+<!-- /aside Widget -->
+<!-- aside Widget -->
+<div class="aside">
+    <h3 class="aside-title">Sản phẩm khác</h3>
+    @{
+        foreach (var item in Common.get8Products())
+        {
+            <div class="product-widget">
+                <div class="product-img">
+                    <img src="~/Assets/ProductImages/@item.ProImage">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-name">@Html.ActionLink(item.ProName, "Details", new { id = item.ProId })</h3>
+                    <h4 class="product-price">@String.Format("{0:###,0 VND}", item.ProPrice) </h4>
+                </div>
+            </div>
+        }
+    }
+
+
+</div>
+<!-- /aside Widget -->

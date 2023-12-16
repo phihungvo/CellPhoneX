@@ -1,0 +1,80 @@
+﻿@model IEnumerable<CellPhoneX_2100009273.Models.Product>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<style>
+    .midlle_tr {
+    vertical-align: middle !important;
+    }
+</style>
+
+<div class="container-fluid">
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isNew)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bestSelling)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stock_quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.CatName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="midlle_tr">
+                    @Html.DisplayFor(modelItem => item.ProName)
+                </td>
+                <td>
+                    <img src="~/Assets/ProductImages/@item.ProImage" class="img-responsive" style="width: 50px" />
+                </td>
+                <td class="midlle_tr">
+                    @Html.DisplayFor(modelItem => item.ProPrice)
+                </td>
+                <td class="midlle_tr">
+                    @Html.DisplayFor(modelItem => item.isNew)
+                </td>
+                <td class="midlle_tr">
+                    @Html.DisplayFor(modelItem => item.bestSelling)
+                </td>
+                <td class="midlle_tr">
+                    @Html.DisplayFor(modelItem => item.stock_quantity)
+                </td>
+                <td class="midlle_tr">
+                    @Html.DisplayFor(modelItem => item.Category.CatName)
+                </td>
+                <td class="midlle_tr">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Details", "Details", new { id = item.ProId }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
